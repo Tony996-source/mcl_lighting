@@ -56,6 +56,9 @@ local path = minetest.get_modpath("mcl_lighting")
 
 minetest.register_node("mcl_lighting:light_rod", {
 	description = ("Light Rod"),
+	_doc_items_hidden = false,
+	stack_max = 64,
+	paramtype2 = "facedir",
 	tiles = {
 		"light_rod_top.png",
 		"light_rod_bottom.png",
@@ -70,8 +73,10 @@ minetest.register_node("mcl_lighting:light_rod", {
 	paramtype2 = "facedir",
 	light_source = 12,
 	sunlight_propagates = true,
-	groups = {cracky = 3, oddly_breakable_by_hand = 3},
-	sounds = mcl_sounds.node_sound_glass_defaults(),
+	groups = {handy=1},
+	sounds = mcl_sounds.node_sound_wood_defaults(),
+	_mcl_blast_resistance = 2,
+	_mcl_hardness = 2,
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -130,9 +135,15 @@ minetest.register_node("mcl_lighting:light_rod", {
 
 minetest.register_node("mcl_lighting:blue_lantern_f", {
   description = "blue Lantern (floor, wall, or ceiling)",
+  _doc_items_hidden = false,
+	stack_max = 64,
   drawtype = "mesh",
   mesh = "blue_lantern_f.obj",
   tiles = {"blue_lantern.png", "metal_dark_32.png"},
+  	groups = {handy=1},
+	sounds = mcl_sounds.node_sound_wood_defaults(),
+	_mcl_blast_resistance = 2,
+	_mcl_hardness = 2,
   collision_box = {
     type = "fixed",
     fixed = {-3/16, -1/2, -3/16, 3/16, 1/16, 3/16}
@@ -143,8 +154,6 @@ minetest.register_node("mcl_lighting:blue_lantern_f", {
   },
   paramtype = "light",
   light_source = 12,
-  groups = {cracky = 2, oddly_breakable_by_hand = 3},
-  sounds = mcl_sounds.node_sound_glass_defaults(),
   on_place = function(itemstack, placer, pointed_thing)
 		local wdir = minetest.dir_to_wallmounted(
       vector.subtract(pointed_thing.under, pointed_thing.above))
@@ -179,9 +188,10 @@ minetest.register_node("mcl_lighting:blue_lantern_c", {
   },
   paramtype = "light",
   light_source = 12,
-  groups = {cracky = 2, oddly_breakable_by_hand = 3,
-    not_in_creative_inventory = 1},
-  sounds = mcl_sounds.node_sound_glass_defaults(),
+  	groups = {handy=1, not_in_creative_inventory = 1},
+	sounds = mcl_sounds.node_sound_wood_defaults(),
+	_mcl_blast_resistance = 2,
+	_mcl_hardness = 2,
   drop = "mcl_lighting:blue_lantern_f",
 })
 
@@ -225,9 +235,10 @@ minetest.register_node("mcl_lighting:lantern_f", {
   },
   paramtype = "light",
   light_source = 12,
-  groups = {cracky = 2, oddly_breakable_by_hand = 3},
-  sounds = mcl_sounds.node_sound_glass_defaults(),
-
+  	groups = {handy=1},
+	sounds = mcl_sounds.node_sound_wood_defaults(),
+	_mcl_blast_resistance = 2,
+	_mcl_hardness = 2,
   on_place = function(itemstack, placer, pointed_thing)
 		local wdir = minetest.dir_to_wallmounted(
       vector.subtract(pointed_thing.under, pointed_thing.above))
@@ -262,9 +273,10 @@ minetest.register_node("mcl_lighting:lantern_c", {
   },
   paramtype = "light",
   light_source = 12,
-  groups = {cracky = 2, oddly_breakable_by_hand = 3,
-    not_in_creative_inventory = 1},
-  sounds = mcl_sounds.node_sound_glass_defaults(),
+  	groups = {handy=1, not_in_creative_inventory = 1},
+	sounds = mcl_sounds.node_sound_wood_defaults(),
+	_mcl_blast_resistance = 2,
+	_mcl_hardness = 2,
   drop = "mcl_lighting:lantern_f",
 })
 
@@ -285,8 +297,9 @@ minetest.register_node("mcl_lighting:lantern_w", {
   paramtype = "light",
   paramtype2 = "wallmounted",
   light_source = 12,
-  groups = {cracky = 2, oddly_breakable_by_hand = 3,
-    not_in_creative_inventory = 1},
-  sounds = mcl_sounds.node_sound_glass_defaults(),
+    groups = {handy=1, not_in_creative_inventory = 1},
+	sounds = mcl_sounds.node_sound_wood_defaults(),
+	_mcl_blast_resistance = 2,
+	_mcl_hardness = 2,
   drop = "mcl_lighting:lantern_f",
 })
