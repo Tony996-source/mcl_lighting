@@ -52,6 +52,84 @@ end
 
 local path = minetest.get_modpath("mcl_lighting")
 
+-- Light Rod
+
+minetest.register_node("mcl_lighting:light_rod", {
+	description = ("Light Rod"),
+	_doc_items_hidden = false,
+	stack_max = 64,
+	tiles = {
+		"light_rod_top.png",
+		"light_rod_bottom.png",
+		"light_rod_side.png",
+		"light_rod_side.png",
+		"light_rod_side.png",
+		"light_rod_side.png",
+	},
+	drawtype = "nodebox",
+	is_ground_content = false,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	light_source = minetest.LIGHT_MAX,
+	sunlight_propagates = true,
+	groups = {handy=1, pickaxey=1, axey=1},
+	sounds = mcl_sounds.node_sound_wood_defaults(),
+	_mcl_blast_resistance = 2,
+	_mcl_hardness = 2,
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.125, -0.5, -0.125, 0.125, -0.4375, 0.125}, -- Base
+			{-0.0625, -0.4375, -0.0625, 0.0625, 0.5, 0.0625}, -- Rod
+		},
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.125, -0.5, -0.125, 0.125, 0.5, 0.125}, -- Base
+		},
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.125, -0.5, -0.125, 0.125, 0.5, 0.125}, -- Base
+		},
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+		if pointed_thing.type ~= "node" then
+			return itemstack
+		end
+
+		local p0 = pointed_thing.under
+		local p1 = pointed_thing.above
+		local param2 = 0
+
+		local placer_pos = placer:get_pos()
+		if placer_pos then
+			local dir = {
+				x = p1.x - placer_pos.x,
+				y = p1.y - placer_pos.y,
+				z = p1.z - placer_pos.z
+			}
+			param2 = minetest.dir_to_facedir(dir)
+		end
+
+		if p0.y - 1 == p1.y then
+			param2 = 20
+		elseif p0.x - 1 == p1.x then
+			param2 = 16
+		elseif p0.x + 1 == p1.x then
+			param2 = 12
+		elseif p0.z - 1 == p1.z then
+			param2 = 8
+		elseif p0.z + 1 == p1.z then
+			param2 = 4
+		end
+
+		return minetest.item_place(itemstack, placer, pointed_thing, param2)
+	end,
+})
+
 -- blue lantern
 
 minetest.register_node("mcl_lighting:blue_lantern_f", {

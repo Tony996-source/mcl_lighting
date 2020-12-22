@@ -1,4 +1,12 @@
  -- Crafts
+ 
+ minetest.register_craft({
+	output = "mcl_lighting:light_rod 4",
+	recipe = {
+		{"mcl_mobitems:blaze_rod"},
+		{"mcl_core:iron_ingot"},
+	},
+})
 
 minetest.register_craft({
   output = "mcl_lighting:blue_lantern_f",
