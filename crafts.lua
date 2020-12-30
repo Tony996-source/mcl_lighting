@@ -53,7 +53,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-  output = "mcl_lighting:barlight_c",
+  output = "mcl_lighting:barlight_c 2",
   type = "shapeless",
   recipe = {"mcl_lighting:barlight_s"}
 })
@@ -61,7 +61,7 @@ minetest.register_craft({
 minetest.register_craft({
   output = "mcl_lighting:barlight_s",
   type = "shapeless",
-  recipe = {"mcl_lighting:barlight_c"}
+  recipe = {"mcl_lighting:barlight_c", "mcl_lighting:barlight_c"}
 })
 
 minetest.register_craft({
