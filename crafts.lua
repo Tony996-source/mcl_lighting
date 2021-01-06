@@ -47,7 +47,7 @@ minetest.register_craft({
 minetest.register_craft({
   output = "mcl_lighting:barlight_c 4",
   recipe = {
-    {"mcl_core:iron_ingot", "mcl_core:iron_ingot", "mcl_core:iron_ingot"},
+    {"mcl_core:iron_ingot", "mcl_nether:glowstone_dust", "mcl_core:iron_ingot"},
     {"mcl_core:gold_ingot", "mcl_core:glass", "mcl_core:gold_ingot"}
   }
 })
@@ -76,7 +76,7 @@ minetest.register_craft({
   output = "mcl_lighting:modern_walllamp",
   recipe = {
     {"mcl_dye:white", "mcl_core:glass", ""},
-    {"mcl_core:glass", "mcl_torches:torch", "mcl_core:iron_ingot"},
+    {"mcl_core:glass", "mcl_nether:glowstone_dust", "mcl_core:iron_ingot"},
     {"", "mcl_dye:grey", "mcl_core:iron_ingot"}
   }
 })

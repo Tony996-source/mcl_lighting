@@ -1,3 +1,4 @@
 mcl_core
 mcl_torches?
 mcl_mobitems?
+mcl_nether?
