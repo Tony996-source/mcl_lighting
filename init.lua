@@ -54,7 +54,7 @@ local path = minetest.get_modpath("mcl_lighting")
 
 -- Light Rod
 
-minetest.register_node("mcl_lighting:light_rod", {
+minetest.register_node("mcl_lighting:modern_light_rod", {
 	description = ("Light Rod"),
 	_doc_items_hidden = false,
 	stack_max = 64,
@@ -220,7 +220,7 @@ minetest.register_node("mcl_lighting:blue_lantern_w", {
 
 -- Orange lantern
 
-minetest.register_node("mcl_lighting:lantern_f", {
+minetest.register_node("mcl_lighting:orange_lantern_f", {
   description = "Lantern (floor, wall, or ceiling)",
   drawtype = "mesh",
   mesh = "lantern_f.obj",
@@ -253,13 +253,13 @@ minetest.register_node("mcl_lighting:lantern_f", {
 		end
 
 		itemstack = minetest.item_place(fakestack, placer, pointed_thing, wdir)
-		itemstack:set_name("mcl_lighting:blue_lantern_f")
+		itemstack:set_name("mcl_lighting:orange_lantern_f")
 
 		return itemstack
 	end,
 })
 
-minetest.register_node("mcl_lighting:lantern_c", {
+minetest.register_node("mcl_lighting:orange_lantern_c", {
   drawtype = "mesh",
   mesh = "lantern_c.obj",
   tiles = {"orange_lantern.png", "metal_dark_32.png"},
@@ -277,10 +277,10 @@ minetest.register_node("mcl_lighting:lantern_c", {
 	sounds = mcl_sounds.node_sound_wood_defaults(),
 	_mcl_blast_resistance = 2,
 	_mcl_hardness = 2,
-  drop = "mcl_lighting:lantern_f",
+  drop = "mcl_lighting:orange_lantern_f",
 })
 
-minetest.register_node("mcl_lighting:lantern_w", {
+minetest.register_node("mcl_lighting:orange_lantern_w", {
   drawtype = "mesh",
   mesh = "lantern_w.obj",
   tiles = {"orange_lantern.png", "metal_dark_32.png"},
@@ -301,7 +301,7 @@ minetest.register_node("mcl_lighting:lantern_w", {
 	sounds = mcl_sounds.node_sound_wood_defaults(),
 	_mcl_blast_resistance = 2,
 	_mcl_hardness = 2,
-  drop = "mcl_lighting:lantern_f",
+  drop = "mcl_lighting:orange_lantern_f",
 })
 
 -- Modern cieling light
