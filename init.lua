@@ -133,7 +133,7 @@ minetest.register_node("mcl_lighting:modern_light_rod", {
 -- blue lantern
 
 minetest.register_node("mcl_lighting:blue_lantern_f", {
-  description = "blue Lantern (floor, wall, or ceiling)",
+  description = "lue Lantern (floor, wall, or ceiling)",
   _doc_items_hidden = false,
 	stack_max = 64,
   drawtype = "mesh",
@@ -221,10 +221,16 @@ minetest.register_node("mcl_lighting:blue_lantern_w", {
 -- Orange lantern
 
 minetest.register_node("mcl_lighting:orange_lantern_f", {
-  description = "Lantern (floor, wall, or ceiling)",
+  description = "Orange Lantern (floor, wall, or ceiling)",
+  _doc_items_hidden = false,
+	stack_max = 64,
   drawtype = "mesh",
-  mesh = "lantern_f.obj",
+  mesh = "orange_lantern_f.obj",
   tiles = {"orange_lantern.png", "metal_dark_32.png"},
+  	groups = {handy=1, pickaxey=1, axey=1},
+	sounds = mcl_sounds.node_sound_wood_defaults(),
+	_mcl_blast_resistance = 2,
+	_mcl_hardness = 2,
   collision_box = {
     type = "fixed",
     fixed = {-3/16, -1/2, -3/16, 3/16, 1/16, 3/16}
@@ -235,21 +241,17 @@ minetest.register_node("mcl_lighting:orange_lantern_f", {
   },
   paramtype = "light",
   light_source = minetest.LIGHT_MAX,
-  	groups = {handy=1, pickaxey=1, axey=1},
-	sounds = mcl_sounds.node_sound_wood_defaults(),
-	_mcl_blast_resistance = 2,
-	_mcl_hardness = 2,
   on_place = function(itemstack, placer, pointed_thing)
 		local wdir = minetest.dir_to_wallmounted(
       vector.subtract(pointed_thing.under, pointed_thing.above))
 		local fakestack = itemstack
 
 		if wdir == 0 then
-			fakestack:set_name("mcl_lighting:lantern_c")
+			fakestack:set_name("mcl_lighting:orange_lantern_c")
 		elseif wdir == 1 then
-			fakestack:set_name("mcl_lighting:lantern_f")
+			fakestack:set_name("mcl_lighting:orange_lantern_f")
 		else
-			fakestack:set_name("mcl_lighting:lantern_w")
+			fakestack:set_name("mcl_lighting:orange_lantern_w")
 		end
 
 		itemstack = minetest.item_place(fakestack, placer, pointed_thing, wdir)
@@ -261,7 +263,7 @@ minetest.register_node("mcl_lighting:orange_lantern_f", {
 
 minetest.register_node("mcl_lighting:orange_lantern_c", {
   drawtype = "mesh",
-  mesh = "lantern_c.obj",
+  mesh = "orange_lantern_c.obj",
   tiles = {"orange_lantern.png", "metal_dark_32.png"},
   collision_box = {
     type = "fixed",
@@ -282,7 +284,7 @@ minetest.register_node("mcl_lighting:orange_lantern_c", {
 
 minetest.register_node("mcl_lighting:orange_lantern_w", {
   drawtype = "mesh",
-  mesh = "lantern_w.obj",
+  mesh = "orange_lantern_w.obj",
   tiles = {"orange_lantern.png", "metal_dark_32.png"},
   collision_box = {
     type = "fixed",
@@ -297,9 +299,9 @@ minetest.register_node("mcl_lighting:orange_lantern_w", {
   paramtype = "light",
   paramtype2 = "wallmounted",
   light_source = minetest.LIGHT_MAX,
-    groups = {handy=1, pickaxey=1, axey=1, not_in_creative_inventory = 1},
-	sounds = mcl_sounds.node_sound_wood_defaults(),
-	_mcl_blast_resistance = 2,
+  groups = {handy=1, pickaxey=1, axey=1, not_in_creative_inventory = 1},
+  sounds = mcl_sounds.node_sound_glass_defaults(),
+  _mcl_blast_resistance = 2,
 	_mcl_hardness = 2,
   drop = "mcl_lighting:orange_lantern_f",
 })
